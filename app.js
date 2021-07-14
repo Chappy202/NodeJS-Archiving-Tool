@@ -9,6 +9,7 @@ const inquirer = require('inquirer');
 
 // Utils
 const initialMessage = require('./util/initialMessage');
+const workingDirectory = require('./util/workingDirectory');
 
 /*
   > Application
@@ -30,4 +31,9 @@ inquirer
     .then((answers) => {
         // Call functions which handles the different choice types here
         console.log(JSON.stringify(answers, null, ' '));
-    })
+        if (answers.action === 'Compress Folders') {
+            workingDirectory('compress');
+        } else {
+            workingDirectory('extract');
+        }
+    });
