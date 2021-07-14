@@ -28,5 +28,6 @@ inquirer
         ],
     }])
     .then((answers) => {
+        // Call functions which handles the different choice types here
         console.log(JSON.stringify(answers, null, ' '));
     })
