@@ -34,7 +34,7 @@ module.exports = () => {
         `               A simple application for creating and extracting archives` +
         `\n               ${chalk.green('Follow the instructions on screen to use the application.')}` +
         `\n`
-    ))
+    ));
 }
 
 /*
