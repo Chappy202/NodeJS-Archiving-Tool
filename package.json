@@ -1,0 +1,39 @@
+{
+  "name": "nodejs-archiving-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chappy202/NodeJS-Archiving-Tool.git"
+  },
+  "keywords": [
+    "nodejs",
+    "archiving",
+    "console",
+    "chalk",
+    "zip",
+    "rar",
+    "7z"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chappy202/NodeJS-Archiving-Tool/issues"
+  },
+  "homepage": "https://github.com/Chappy202/NodeJS-Archiving-Tool#readme",
+  "dependencies": {
+    "adm-zip": "^0.5.5",
+    "chalk": "^4.1.1",
+    "dotenv": "^10.0.0",
+    "inquirer": "^8.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
