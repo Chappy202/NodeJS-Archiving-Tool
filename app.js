@@ -1,3 +1,4 @@
+'use strict';
 require('dotenv').config();
 
 /*
@@ -15,7 +16,7 @@ const initialMessage = require('./util/initialMessage');
 // Initial display message when app is started
 initialMessage();
 
-// Initial Question and logic
+// Initial Question and logic (The question interaction does not work with the nodemon dev script)
 inquirer
     .prompt([{
         type: 'list',
