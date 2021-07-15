@@ -1,8 +1,7 @@
-import AdmZip from 'adm-zip';
-
-const adm = require('adm-zip');
+const AdmZip = require('adm-zip');
 const Winrar = require('winrarjs');
 const Seven = require('node-7z');
+
 export default class Delete {
     extractZip(location, target, file) {
         const zip = new AdmZip();
