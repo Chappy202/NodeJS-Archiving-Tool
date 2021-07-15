@@ -2,7 +2,7 @@ const AdmZip = require('adm-zip');
 const Winrar = require('winrarjs');
 const Seven = require('node-7z');
 
-export default class Delete {
+class Extract {
     extractZip(location, target, file) {
         const zip = new AdmZip();
         zip.extractAllTo(target,true);//IDK WHAT NEEEDS TO BE HERE LMAO
@@ -10,14 +10,14 @@ export default class Delete {
 
     extractWinRAR(location, target, file) {
         //Reading WinRAR file
-        const winrar = new Winrar();
+        let winrar = new Winrar();
         winrar.listFile().then((result) => {
             console.log(result);
         }).catch((err) => {
             console.log(err);
         });
         //Extracting to File
-        const winrar = new Winrar();
+        winrar = new Winrar();
         winrar.setOutput(target); //where file should be saved
 
         winrar.setConfig({
@@ -39,3 +39,5 @@ export default class Delete {
           })
     };
 }
+
+module.exports = new Extract();
