@@ -4,7 +4,7 @@ const path = require('path');
 
 inquirer.registerPrompt('directory', directory);
 
-module.exports = (type = 'archive') => {
+module.exports = (type = 'archive', amount = 'Multiple') => {
     inquirer
         .prompt([
             {
@@ -17,9 +17,9 @@ module.exports = (type = 'archive') => {
         .then(answers => {
             console.log(JSON.stringify(answers), null, ' ');
             if (type === 'extract') {
-                require('./logic/handleExtraction').initial(path.join(__dirname, '..', `${answers.folder}`));
+                require('./logic/handleExtraction').initial(path.join(__dirname, '..', `${answers.folder}`), 'folder', amount);
             } else if (type === 'compress') {
-                require('./logic/handleCompression').initial(path.join(__dirname, '..', `${answers.folder}`));
+                require('./logic/handleCompression').initial(path.join(__dirname, '..', `${answers.folder}`), 'folder', amount);
             }
         })
 }

@@ -9,7 +9,6 @@ const inquirer = require('inquirer');
 
 // Utils
 const initialMessage = require('./util/initialMessage');
-const workingDirectory = require('./util/workingDirectory');
 
 /*
   > Application
