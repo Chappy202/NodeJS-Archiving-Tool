@@ -2,7 +2,7 @@ const adm = require('adm-zip');
 const Winrar = require('winrarjs');
 const Seven = require('node-7z');
 
-export default class Delete {
+class Compress {
 
     compressZip(location, target, file) {
         const zip = new adm();
@@ -30,3 +30,5 @@ export default class Delete {
         })
     }
 }
+
+module.exports = new Compress();
