@@ -3,9 +3,9 @@ const Winrar = require('winrarjs');
 const Seven = require('node-7z');
 
 class Extract {
-    extractZip(location, target, file) {
-        const zip = new AdmZip();
-        zip.extractAllTo(target,true);//IDK WHAT NEEEDS TO BE HERE LMAO
+    extractZip(output, filepath) {
+        const zip = new AdmZip(filepath);
+        zip.extractAllTo(output,true);
     };
 
     extractWinRAR(location, target, file) {
