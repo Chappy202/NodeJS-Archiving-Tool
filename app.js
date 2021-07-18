@@ -31,10 +31,8 @@ inquirer
         // Call functions which handles the different choice types here
         console.log(JSON.stringify(answers, null, ' '));
         if (answers.action === 'Compress Folders') {
-            require('./lib/questions/compressAmount')();
-            // workingDirectory('compress');
+            require('./util/workingDirectory')('compress');
         } else {
-            require('./lib/questions/extractAmount')();
-            // workingDirectory('extract');
+            require('./util/workingDirectory')('extract');
         }
     });

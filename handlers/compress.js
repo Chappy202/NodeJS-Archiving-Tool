@@ -1,32 +1,30 @@
-const adm = require('adm-zip');
-const Winrar = require('winrarjs');
-const Seven = require('node-7z');
+const chalk = require('chalk');
+const archiver = require('archiver');
+const fs = require('fs');
+const path = require('path');
+const moveFile = require('../lib/moveFile');
 
 class Compress {
 
-    compressZip(location, target, file) {
-        const zip = new adm();
-        zip.addFile(file);
-        zip.writeZip(target); // Has callback functionality
-    }
+    async compressZip(source, out) {
+        const archive = archiver('zip', { zlib: { level: 4 }});
+        const stream = fs.createWriteStream(out);
 
-    compressRar(location, target, file) {
-        // Since the rar format is closed-source, the rar drivers need to be installed in order to use this function
-        const winrar = new Winrar();
-        winrar.addFile(file);
-        winrar.setOutput(target);
-        winrar.setConfig({
-            level: process.env.RAR_COMPRESSION || 2
-        });
+        return new Promise((res, rej) => {
+            archive
+                .directory(source, false)
+                .on('error', (err) => {
+                    console.log(chalk.red(`Something went wrong while trying to compress your selection.`));
+                    rej(err);
+                })
+                .pipe(stream);
 
-        winrar.rar(); // Has callback functionality
-    }
+            stream.on('close', () => {
+                console.log(chalk.green(`Finished zipping your selection`));
+            });
+            moveFile(out, path.join(out, '../../'));
 
-    compress7z(name, target, file) {
-        // The 7-zip libraries and binaries will need to be installed in order for this function to work
-        const stream = Seven.add(name, file, {
-            recursive: true,
-            outputDir: target
+            archive.finalize();
         })
     }
 }
