@@ -23,7 +23,7 @@ class Extraction {
                     Extract.extractWinRAR(out, filepath).then(() => {
                         deleteFile(filepath);
                     }).catch(err => {
-                        console.log(chalk.red('Something went wrong while trying to extract the rar file: ', chalk.yellow(err.message)));
+                        console.log(chalk.red('Something went wrong while trying to extract the rar file:', chalk.yellow(err.message)));
                     });
                 }
             break;

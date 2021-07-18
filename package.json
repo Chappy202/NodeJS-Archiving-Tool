@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
+    "dev": "echo Nodemon tends to cause issues with the interactiveness on some terminals. Use 'npm run start' instead for full functionality. && nodemon app.js",
     "start": "node app.js"
   },
   "repository": {
