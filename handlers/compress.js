@@ -1,5 +1,8 @@
-const chalk = require('chalk');
+// Archive Libraries
 const archiver = require('archiver');
+
+// NodeJS
+const chalk = require('chalk');
 const fs = require('fs');
 
 class Compress {

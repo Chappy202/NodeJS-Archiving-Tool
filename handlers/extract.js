@@ -1,9 +1,16 @@
+// Extraction Libraries
 const AdmZip = require('adm-zip');
 const Winrar = require('winrarjs');
 const Seven = require('node-7z');
+
+// 7-Zip Utils
 const sevenBin = require('7zip-bin');
+
+// NodeJs
 const path = require('path');
 const chalk = require('chalk');
+
+// Lib
 const deleteFile = require('../lib/deleteFile');
 
 class Extract {
