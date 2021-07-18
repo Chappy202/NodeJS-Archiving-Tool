@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+
 // Lib
 const deleteFile = require('../../lib/deleteFile');
 
@@ -6,27 +8,29 @@ const Extract = require('../../handlers/extract');
 const path = require('path');
 
 class Extraction {
-
-    
-
     async initial(out, filepath) {
         let _type = path.basename(filepath).split(".")[1];
         switch (_type) {
             case 'zip':
                 {
-                    Extract.extractZip(out,filepath)
+                    Extract.extractZip(out,filepath);
+                    deleteFile(filepath);
                 }
                 break;
 
             case 'rar':
                 {
-                    console.log("Winrar Version");
+                    Extract.extractWinRAR(out, filepath).then(() => {
+                        deleteFile(filepath);
+                    }).catch(err => {
+                        console.log(chalk.red('Something went wrong while trying to extract the rar file: ', chalk.yellow(err.message)));
+                    });
                 }
             break;
 
             case '7z':
                 {
-                    console.log("7Z Version");
+                    Extract.extract7z(out, filepath);
                 }
             break;
         
@@ -36,11 +40,6 @@ class Extraction {
                 }
                 break;
         }
-
-
-        // console.log(out);
-        // Extract.extractZip(out, filepath);
-        // deleteFile(filepath);
     }
 }
 
