@@ -22,7 +22,6 @@ class Compress {
             stream.on('close', () => {
                 console.log(chalk.green(`Finished zipping your selection`));
             });
-            moveFile(out, path.join(out, '../../'));
 
             archive.finalize();
         })
