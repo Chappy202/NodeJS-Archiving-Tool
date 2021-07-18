@@ -3,6 +3,7 @@ const Path = require('path');
 
 // Lib
 const moveFile = require('../../lib/moveFile');
+const deleteFolder = require('../../lib/deleteFolder');
 
 // Handlers
 const Compress = require('../../handlers/compress');
@@ -14,6 +15,7 @@ class Compression {
         });
         const out = path + `/${name}.zip`;
         moveFile(out, Path.join(out, `../../`, `${name}.zip`));
+        deleteFolder(path);
     }
 }
 
