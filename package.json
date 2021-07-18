@@ -36,8 +36,7 @@
     "inquirer-directory": "^2.2.0",
     "inquirer-file-tree-selection-prompt": "^1.0.12",
     "node-7z": "^3.0.0",
-    "winrarjs": "^0.0.17",
-    "zip-dir": "^2.0.0"
+    "winrarjs": "^0.0.17"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
