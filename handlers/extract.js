@@ -1,7 +1,10 @@
 const AdmZip = require('adm-zip');
 const Winrar = require('winrarjs');
 const Seven = require('node-7z');
+const sevenBin = require('7zip-bin');
 const path = require('path');
+const chalk = require('chalk');
+const deleteFile = require('../lib/deleteFile');
 
 class Extract {
     extractZip(output, filepath) {
@@ -11,25 +14,25 @@ class Extract {
 
     extractWinRAR(output, filepath) {
         let winrar = new Winrar(filepath);
+        winrar.isRarInstalled(false);
         winrar.setOutput(output); //where file should be saved
 
-        winrar.setConfig({
-            deleteAfter: true,
-            keepBroken: true
-        })
-
-        winrar.unrar().then((result) => {
-            console.log(result);
-        }).catch((err) => {
-            console.log(err);
-        })
+        return winrar.unrar();
     };
 
-    extract7z(name, target, file) {
-        const stream = Seven.extractFull(name, file, {
-            recursive: true,
-            outputDir: target
-          })
+    extract7z(output, filepath) {
+        const stream = Seven.extractFull(filepath, output + path.basename(filepath).replace(/\.[^/.]+$/, ""), {
+            $progress: true,
+            $bin: sevenBin.path7za
+          });
+
+        stream.on('end', () => {
+            deleteFile(filepath);
+        })
+
+        stream.on('error', (err) => {
+            console.log(chalk.red('Something went wrong while trying to extract 7-zip file:', chalk.yellow(err.message)))
+        });
     };
 }
 
