@@ -6,7 +6,6 @@ const Extract = require('../../handlers/extract');
 
 class Extraction {
     initial(out, filepath) {
-        console.log(out);
         Extract.extractZip(out, filepath);
         deleteFile(filepath);
     }

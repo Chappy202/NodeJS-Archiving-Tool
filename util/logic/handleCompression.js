@@ -9,13 +9,14 @@ const deleteFolder = require('../../lib/deleteFolder');
 const Compress = require('../../handlers/compress');
 
 class Compression {
-    initial(path, name = 'foo.zip') {
+    async initial(path, name = 'foo.zip') {
         Compress.compressZip(path, path + `/${name}.zip`).catch((err) => {
             console.log(chalk.red(`Something went wrong during your compression.`, err));
         });
         const out = path + `/${name}.zip`;
-        moveFile(out, Path.join(out, `../../`, `${name}.zip`));
-        deleteFolder(path);
+        moveFile(out, Path.join(out, `../../`, `${name}.zip`)).then(() => {
+            deleteFolder(path);
+        })
     }
 }
 
