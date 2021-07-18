@@ -33,6 +33,6 @@ inquirer
         if (answers.action === 'Compress Folders') {
             require('./util/workingDirectory')('compress');
         } else {
-            require('./util/workingDirectory')('extract');
+            require('./util/workingFIle')('extract');
         }
     });

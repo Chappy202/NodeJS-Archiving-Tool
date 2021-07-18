@@ -1,9 +1,14 @@
+// Lib
+const deleteFile = require('../../lib/deleteFile');
+
 // Handlers
 const Extract = require('../../handlers/extract');
 
 class Extraction {
-    initial(path) {
-        console.log('Folder Extract');
+    initial(out, filepath) {
+        console.log(out);
+        Extract.extractZip(out, filepath);
+        deleteFile(filepath);
     }
 }
 
