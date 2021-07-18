@@ -9,17 +9,9 @@ class Extract {
         zip.extractAllTo(output + path.basename(filepath).replace(/\.[^/.]+$/, ""),true);
     };
 
-    extractWinRAR(location, target, file) {
-        //Reading WinRAR file
-        let winrar = new Winrar();
-        winrar.listFile().then((result) => {
-            console.log(result);
-        }).catch((err) => {
-            console.log(err);
-        });
-        //Extracting to File
-        winrar = new Winrar();
-        winrar.setOutput(target); //where file should be saved
+    extractWinRAR(output, filepath) {
+        let winrar = new Winrar(filepath);
+        winrar.setOutput(output); //where file should be saved
 
         winrar.setConfig({
             deleteAfter: true,

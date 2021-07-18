@@ -6,8 +6,9 @@ const Extract = require('../../handlers/extract');
 
 class Extraction {
     initial(out, filepath) {
-        Extract.extractZip(out, filepath);
-        deleteFile(filepath);
+        // Extract.extractZip(out, filepath);
+        Extract.extractWinRAR(out, filepath)
+        // deleteFile(filepath);
     }
 }
 
