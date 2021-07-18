@@ -1,11 +1,12 @@
 const AdmZip = require('adm-zip');
 const Winrar = require('winrarjs');
 const Seven = require('node-7z');
+const path = require('path');
 
 class Extract {
     extractZip(output, filepath) {
         const zip = new AdmZip(filepath);
-        zip.extractAllTo(output,true);
+        zip.extractAllTo(output + path.basename(filepath).replace(/\.[^/.]+$/, ""),true);
     };
 
     extractWinRAR(location, target, file) {
